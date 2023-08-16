@@ -5,7 +5,16 @@ document.getElementById('btn-deposit').addEventListener('click', function() {
    const depositInpVal = depositInp.value;
    // for non input (element other than input, textarea) use innerText to get the text.
    const depositTotal = document.getElementById('deposit-total');
-   depositTotal.innerText = parseFloat(depositTotal.innerText) + parseFloat(depositInpVal);
+
+   if(isNaN(parseFloat(depositInp.value)) === false){
+      // setting total withdraw amount.
+      depositTotal.innerText = parseFloat(depositTotal.innerText) + parseFloat(depositInpVal);
+   }
+   else{
+      alert('Please inter valid number');
+      depositInp.value = null;
+      return;
+   }
    
    depositInp.value = null;
    // Updating Balance amount.
